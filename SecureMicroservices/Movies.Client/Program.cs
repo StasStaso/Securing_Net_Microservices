@@ -1,3 +1,4 @@
+﻿using Movies.Client.ApiServices;
 namespace Movies.Client
 {
     public class Program
@@ -8,6 +9,7 @@ namespace Movies.Client
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IMovieApiService, MovieApiService>();
 
             var app = builder.Build();
 
