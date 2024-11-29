@@ -33,7 +33,7 @@ namespace IdentityServer
                     },
                     PostLogoutRedirectUris = new List<string>()
                     {
-                        "https://localhost:5002/signoutn-callback-oidc"
+                        "https://localhost:5002/signout-callback-oidc"
                     },
                     ClientSecrets = new List<Secret>()
                     {
