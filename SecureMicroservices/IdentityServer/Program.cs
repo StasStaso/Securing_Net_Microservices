@@ -12,11 +12,24 @@ namespace IdentityServer
             builder.Services.AddIdentityServer()
                 .AddInMemoryClients(Config.Clients)
                 .AddInMemoryApiScopes(Config.ApiScopes)
+                .AddInMemoryIdentityResources(Config.IdentityResources)
+                .AddTestUsers(Config.TestUsers)
                 .AddDeveloperSigningCredential();
+
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
 
             var app = builder.Build();
 
+            app.UseStaticFiles();
+            app.UseRouting();
             app.UseIdentityServer();
+
+            app.UseAuthorization();
+
+            app.MapRazorPages();
+
+            app.MapDefaultControllerRoute();
 
             app.Run();
         }
