@@ -1,5 +1,6 @@
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Test;
+using IdentityServerHost;
 
 namespace IdentityServer
 {
@@ -13,7 +14,7 @@ namespace IdentityServer
                 .AddInMemoryClients(Config.Clients)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryIdentityResources(Config.IdentityResources)
-                .AddTestUsers(Config.TestUsers)
+                .AddTestUsers(TestUsers.Users)
                 .AddDeveloperSigningCredential();
 
             builder.Services.AddControllersWithViews();

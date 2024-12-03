@@ -27,6 +27,13 @@ namespace Movies.Client.Controllers
             return View(await _movieApiService.GetMovies());
         }
 
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> OnlyAdmin() 
+        {
+            var userInfo = await _movieApiService.GetUserInfo();
+            return View(userInfo);
+        }
+
         public async Task LogTokenAndClaims() 
         {
             var identityToken = await HttpContext.GetTokenAsync(
